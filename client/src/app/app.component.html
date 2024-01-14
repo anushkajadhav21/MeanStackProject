@@ -1,1 +1,18 @@
+First Name:<input [(ngModel)]="newUser.firstname"type="text">
+Last Name: <input [(ngModel)]="newUser.lastname"type="text">
+<button (click)="createUser()">Submit</button>
+
 <button (click)="getUsers()">Get users</button>
+<ul>
+  <!-- @for (task of task; track $index) {
+    <li>{{task}}</li>                                                                                      
+  } -->
+   @for (user of users; track user._id) {
+    <li>{{user.firstname}},{{user.lastname}}
+       <button (click)="deleteUser(user._id)">Delete</button>                                                                                   
+    </li>                                                                                      
+  }
+</ul>                                                                                       
+
+
+
