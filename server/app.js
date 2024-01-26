@@ -9,8 +9,8 @@ mongoose.connect(process.env.mongodb).then(() => {
   console.log('Error connecting to Mongo');
 });
 
-var usersRouter = require('./api/user/user.route');
-
+var employeeRouter = require('./api/Employee/Employee.route');
+var usersRouter=require('./api/User/user.route.js');
 var app = express();
 
 app.use((req, res, next) => {
@@ -22,7 +22,8 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());  
-app.use('/users', usersRouter);
+app.use('/employee', employeeRouter);
+app.use('/users',usersRouter)
 
 app.listen(3000, () => {
   console.log('listening on http://localhost:3000');

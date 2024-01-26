@@ -1,0 +1,18 @@
+<p>user works!</p>
+<button type="button" class="btn btn-primary" (click)="getEmployee()">GetEmployee</button>
+<button type="button" class="btn btn-success" (click)="goToAdd()">Go to Add Employee</button>
+<button type="button" class="btn btn-secondary" (click)="goToLogin()">Go to Login</button>
+<button type="button" class="btn btn-secondary" (click)="goToRegister()">Go to Register</button>
+
+
+<ul>
+  @for (user of employee; track employee._id) {
+  <li>
+    {{ user.firstname }}
+    {{ user.lastname }}
+    <button type="button" class="btn btn-danger" (click)="deleteEmployee(user._id)">Delete</button>
+    <button type="button" class="btn btn-info" (click)="  goToUpdate(user._id)">Edit</button>
+
+  </li>
+  }
+</ul>
