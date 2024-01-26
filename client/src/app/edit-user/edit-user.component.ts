@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EditUserComponent implements OnInit{
 
   id : String = "";
+  
   updateEmp ={
   "firstname":'',
   "lastname":''
