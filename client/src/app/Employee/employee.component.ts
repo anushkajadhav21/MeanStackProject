@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -8,12 +8,17 @@ import { Router } from '@angular/router';
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.scss'
 })
-export class employeeComponent {
+export class employeeComponent implements OnInit{
   employee: any = [];
+  isLoading = false;
 
   newEmployee = {
     firstname: '',
     lastname: ''
+  }
+
+  ngOnInit(): void {
+    this.getEmployee();
   }
   //task = ['Study','Play','Sleep'];
   //quiz = [ { {'Ques'},{'opt a','opt b','opt c','opt d'},{'correct option'} } ];
@@ -22,13 +27,16 @@ export class employeeComponent {
   }
 
   getEmployee() {
+    this.isLoading = true;
     this.http.get('http://localhost:3000/employee').subscribe({
       next: (res: any) => {
         console.log(res);
         this.employee = res.employee;
+        //this.isLoading =false;
       },
       error: (err) => {
         console.log(err);
+       // this.isLoading = false;
       }
     })
   }
@@ -48,7 +56,7 @@ export class employeeComponent {
  createEmployee(){
   //this.http.post('http://localhost:3000/users',{firstname:"Khushi",lastname:"jadhav"}).subscribe({
 
-    this.http.post('http://localhost:3000/employee',this.newEmployee).subscribe({
+    this.http.post('http://localhost:3000/employees',this.newEmployee).subscribe({
       next: (res: any) => {
         console.log(res);
         // this.newUser:firstname = '';
@@ -75,7 +83,7 @@ export class employeeComponent {
   }
 
   goToUpdate(id :any){
-  this.router.navigate(['edit-user/'+id]);
+  this.router.navigate(['/edit-user/'+id]);
   }
 
 }

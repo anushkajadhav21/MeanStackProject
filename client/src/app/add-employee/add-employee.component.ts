@@ -26,7 +26,7 @@ export class AddemployeeComponent {
   createEmployee(){
     //this.http.post('http://localhost:3000/employees',{firstname:"Khushi",lastname:"jadhav"}).subscribe({
   
-      this.http.post('http://localhost:3000/employees',this.newemployee).subscribe({
+      this.http.post('http://localhost:3000/employee',this.newemployee).subscribe({
         next: (res: any) => {
           console.log(res);
           // this.newemployee:firstname = '';
@@ -39,8 +39,8 @@ export class AddemployeeComponent {
       })
     }
 
-    gotToAdd() {
-      this.router.navigate(['/employee']);
+    gotToView() {
+      this.router.navigate(['/user']);
     }
 }
 
